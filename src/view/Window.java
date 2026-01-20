@@ -19,9 +19,7 @@ public class Window extends JFrame {
     private Window() {
         this.setTitle("Java 2D Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-        // TO-DO: make it resizable
-        this.setResizable(false);
+        this.setResizable(true);
     }
 
     private void Show(){
@@ -31,7 +29,9 @@ public class Window extends JFrame {
     private void ChangePanel(JPanel panel){
         this.getContentPane().removeAll();
         this.add(panel);
-        this.pack(); this.revalidate(); this.repaint();
+        this.pack(); this.setLocationRelativeTo(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.revalidate(); this.repaint();
         this.Show();
     }
 
