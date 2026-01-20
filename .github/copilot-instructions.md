@@ -20,3 +20,21 @@
 
 - When creating a singleton class, place the GetInstance() method first in the class
 - Order: static instance field, GetInstance() method, then constructor and other methods
+
+## Variable Initialization
+
+- Initialize member variables at declaration, not in the constructor
+- Example: `private final JButton new_game = new JButton("New Game");`
+- Keep constructors focused on setup and configuration logic
+
+## Magic Numbers
+
+- Never use magic numbers directly in code
+- Always create final variables with descriptive names for all numeric values
+- This includes: dimensions, sizes, margins, padding, thickness, colors, etc.
+- Examples:
+  - `final int buttons_width = 200;`
+  - `final int buttons_height = 40;`
+  - `final int buttons_vbox_border_thickness = 10;`
+  - `final int buttons_vbox_margin = 10;`
+- Group related constants together in the code for clarity
