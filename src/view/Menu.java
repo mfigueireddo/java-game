@@ -31,6 +31,12 @@ public class Menu extends Panel {
 
         SetupButtons();
         SetupButtonsVBox();
+
+        // Temporary behavior while the proper actions aren't implemented
+        final boolean should_enable_buttons = false;
+        new_game.setEnabled(should_enable_buttons);
+        load_game.setEnabled(should_enable_buttons);
+        settings.setEnabled(should_enable_buttons);
     }
 
     private void SetupButtons(){
@@ -57,6 +63,11 @@ public class Menu extends Panel {
         new_game.setMaximumSize(buttons_dimensions);
         load_game.setMaximumSize(buttons_dimensions);
         settings.setMaximumSize(buttons_dimensions);
+
+        // Buttons action listeners
+        new_game.addActionListener(e -> OnNewGame());
+        load_game.addActionListener(e -> OnLoadGame());
+        settings.addActionListener(e -> OnSettings());
     }
 
     private void SetupButtonsVBox(){
@@ -82,6 +93,18 @@ public class Menu extends Panel {
         buttons_vbox.add(settings);
 
         this.add(buttons_vbox);
+    }
+
+    private void OnNewGame() {
+        // TODO: Implement new game logic
+    }
+
+    private void OnLoadGame() {
+        // TODO: Implement load game logic
+    }
+
+    private void OnSettings() {
+        // TODO: Implement settings logic
     }
 
 }
