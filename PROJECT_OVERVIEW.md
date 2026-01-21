@@ -84,9 +84,9 @@ src/
 #### `Menu.java`
 - **Pattern**: Singleton
 - **Purpose**: Main menu screen
-- **Current State**: Basic implementation with black background
+- **Current State**: Functional implementation with white background and three menu buttons (New Game, Load Game, Settings) with hover effects
 - **Inherits**: Panel (provides screen size validation)
-- **Future Enhancement**: Will contain menu buttons and navigation options
+- **Future Enhancement**: Button actions need to be implemented (currently disabled)
 
 ---
 
@@ -219,9 +219,9 @@ Based on the current architecture, the following areas are ready for expansion:
 - Add player/entity management
 
 ### 2. **Menu Functionality**
-- Add buttons to Menu panel
-- Implement navigation between screens
-- Add settings and options
+- ✓ Add buttons to Menu panel (completed: New Game, Load Game, Settings)
+- Implement button actions and navigation between screens
+- Implement settings functionality
 
 ### 3. **Additional Panels/Screens**
 - GamePanel for actual gameplay
