@@ -10,7 +10,7 @@ This is a Java-based 2D game application built using Swing for the graphical use
 
 The project is in its **initial development phase**, with the foundational architecture established. Currently, the application can:
 - Launch a game window
-- Display a basic menu screen (black background)
+- Display a basic menu screen (white background with menu buttons)
 - Handle minimum screen size requirements
 - Use the singleton pattern for key components
 
