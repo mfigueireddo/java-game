@@ -17,7 +17,7 @@ public abstract class Panel extends JPanel {
         int screen_height = screen_size.height;
         try {
             Wrappers.VerifyMinValue(screen_width, MIN_WIDTH);
-            Wrappers.VerifyMaxValue(screen_height, MIN_HEIGHT);
+            Wrappers.VerifyMinValue(screen_height, MIN_HEIGHT);
         } 
         catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -25,6 +25,5 @@ public abstract class Panel extends JPanel {
         }
         this.setPreferredSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     }
-
 
 }
