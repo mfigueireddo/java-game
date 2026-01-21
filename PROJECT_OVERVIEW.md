@@ -164,7 +164,7 @@ The project follows specific naming conventions as defined in `.github/copilot-i
 5. Window creates and displays Menu panel
 6. Menu panel validates screen size (via Panel constructor)
    - If screen too small: Application exits with error code 1
-   - If screen valid: Black menu screen displays
+   - If screen valid: White menu screen with three menu buttons displays
 7. Window maximizes and becomes visible
 ```
 
