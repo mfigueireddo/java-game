@@ -56,7 +56,7 @@ public class Menu extends Panel {
         final int buttons_width = 200;
         final int buttons_height = 40;
         final Dimension buttons_dimensions = new Dimension(buttons_width, buttons_height);
-        // JavaSwing's Boxes will try to strech its elements. To avoid it, set the preferred and maximum size to be the same
+        // JavaSwing's Boxes will try to stretch its elements. To avoid it, set the preferred and maximum size to be the same
         new_game.setPreferredSize(buttons_dimensions);
         load_game.setPreferredSize(buttons_dimensions);
         settings.setPreferredSize(buttons_dimensions);
