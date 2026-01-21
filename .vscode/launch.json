@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Game",
+            "request": "launch",
+            "mainClass": "controller.GameRunner",
+            "classPaths": [
+                "${workspaceFolder}/bin"
+            ],
+            "console": "integratedTerminal",
+            "preLaunchTask": "compile-java"
+        }
+    ]
+}
