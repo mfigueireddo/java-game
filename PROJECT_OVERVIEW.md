@@ -219,7 +219,7 @@ Based on the current architecture, the following areas are ready for expansion:
 - Add player/entity management
 
 ### 2. **Menu Functionality**
-- Add buttons to Menu panel
+- Enhance Menu panel buttons (layout, styling, and actions)
 - Implement navigation between screens
 - Add settings and options
 
