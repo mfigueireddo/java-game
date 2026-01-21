@@ -84,9 +84,20 @@ src/
 #### `Menu.java`
 - **Pattern**: Singleton
 - **Purpose**: Main menu screen
-- **Current State**: Basic implementation with black background
+- **Current State**: Fully functional menu with three buttons
 - **Inherits**: Panel (provides screen size validation)
-- **Future Enhancement**: Will contain menu buttons and navigation options
+- **Layout**: GridBagLayout with centered vertical button box
+- **Components**:
+  - Three buttons: "New Game", "Load Game", "Settings"
+  - Buttons are currently disabled (temporary state)
+  - Custom hover effects (light gray to light blue)
+  - Fixed button dimensions: 200x40 pixels
+  - Bordered box container with padding
+- **Styling**:
+  - White background
+  - Light gray buttons with light blue hover effect
+  - Black border around button container
+- **Future Enhancement**: Implement action handlers for button clicks (currently TODO)
 
 ---
 
@@ -192,56 +203,9 @@ Panel Constructor
 
 ## Build and Execution
 
-### Compilation
-```bash
-javac -d bin -sourcepath src src\controller\GameRunner.java
-```
-
-### Execution
-```bash
-java -cp bin controller.GameRunner
-```
-
 ### Directory Structure
 - **Source**: `src/` - Contains all .java source files
 - **Binaries**: `bin/` - Contains compiled .class files
-- **Documentation**: `tutorials/` - Contains learning materials
-
----
-
-## Future Development Areas
-
-Based on the current architecture, the following areas are ready for expansion:
-
-### 1. **Game State Management**
-- Create a model package for game state
-- Implement game logic classes
-- Add player/entity management
-
-### 2. **Menu Functionality**
-- Enhance Menu panel buttons (layout, styling, and actions)
-- Implement navigation between screens
-- Add settings and options
-
-### 3. **Additional Panels/Screens**
-- GamePanel for actual gameplay
-- SettingsPanel for game configuration
-- PausePanel for in-game pause menu
-
-### 4. **Game Loop**
-- Implement game update/render cycle
-- Add frame rate management
-- Handle user input
-
-### 5. **Graphics and Rendering**
-- Sprite loading and rendering
-- Animation system
-- Camera/viewport management
-
-### 6. **Input Handling**
-- Keyboard input system
-- Mouse input handling
-- Controller support
 
 ---
 
@@ -263,12 +227,6 @@ Based on the current architecture, the following areas are ready for expansion:
 - No unit tests implemented yet
 - Manual testing of window display and screen validation
 
-### Planned Testing
-According to Definition of Done:
-- Unit tests for all components
-- Linter approval
-- Acceptance criteria verification
-
 ---
 
 ## Repository Information
@@ -277,20 +235,3 @@ According to Definition of Done:
 - **Branch**: main
 - **Platform**: GitHub
 - **License**: Not specified
-
----
-
-## Getting Started for New Contributors
-
-1. **Clone the repository**
-2. **Review this overview** to understand the architecture
-3. **Check [ISSUE_TEMPLATE.md](.github/ISSUE_TEMPLATE.md)** for issue creation guidelines
-4. **Read [copilot-instructions.md](.github/copilot-instructions.md)** for coding conventions
-5. **Build and run** the application following [build.md](build.md)
-6. **Start with simple issues** labeled for beginners
-
----
-
-## Summary
-
-This is a well-structured foundation for a 2D game in Java. The singleton pattern ensures efficient resource management, the MVC architecture provides clear separation of concerns, and the validation system ensures the application runs in appropriate environments. The project is ready for feature expansion while maintaining clean architecture principles.
