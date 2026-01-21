@@ -68,6 +68,29 @@ public class Menu extends Panel {
         new_game.addActionListener(e -> OnNewGame());
         load_game.addActionListener(e -> OnLoadGame());
         settings.addActionListener(e -> OnSettings());
+
+        // Buttons coloring (normal and hover)
+        final Color button_normal_color = new Color(238, 238, 238);  // Light gray
+        final Color button_hover_color = new Color(200, 220, 255);   // Light blue
+        SetupButtonHoverEffect(new_game, button_normal_color, button_hover_color);
+        SetupButtonHoverEffect(load_game, button_normal_color, button_hover_color);
+        SetupButtonHoverEffect(settings, button_normal_color, button_hover_color);
+    }
+
+    private void SetupButtonHoverEffect(JButton button, Color normal_color, Color hover_color) {
+        button.setBackground(normal_color);
+        
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(hover_color);
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(normal_color);
+            }
+        });
     }
 
     private void SetupButtonsVBox(){
