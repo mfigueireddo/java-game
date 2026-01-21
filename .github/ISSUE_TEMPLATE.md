@@ -93,9 +93,6 @@ An issue is ready to be worked on when:
 
 - ✅ **Description Done**: The issue has a clear title, detailed description, and all requirements defined
 - ✅ **Acceptance Criteria Defined**: All acceptance criteria are written in GIVEN/WHEN/THEN format
-- ✅ **Dependencies Identified**: Any blockers or dependent issues are noted
-- ✅ **Scope is Clear**: The work can be completed within a reasonable timeframe
-- ✅ **Assignable**: The issue has enough detail for a developer to start work
 
 ---
 
@@ -103,12 +100,11 @@ An issue is ready to be worked on when:
 
 An issue is complete when:
 
-- ✅ **Unit Tests**: All new code has corresponding unit tests with passing results
-- ✅ **Linter Approval**: Code passes all linting checks and follows project conventions
+- ✅ **Unit Tests**: All new model code has corresponding unit tests with passing results
+- ✅ **Linter Approval**: Code passes all linting checks (via Copilot in Pull Requests) and follows project conventions
 - ✅ **All Acceptance Criteria Achieved**: Every acceptance criterion has been met and verified
 - ✅ **Code Review**: Changes have been reviewed and approved (if applicable)
-- ✅ **Documentation Updated**: Relevant documentation reflects the changes
-- ✅ **No Regressions**: Existing functionality remains intact
+- ✅ **Documentation Updated**: README.md properly updated
 
 ---
 
