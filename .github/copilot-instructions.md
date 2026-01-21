@@ -38,3 +38,15 @@
   - `final int buttons_vbox_border_thickness = 10;`
   - `final int buttons_vbox_margin = 10;`
 - Group related constants together in the code for clarity
+
+## Exception Handling
+
+- Use exceptions ONLY for extreme cases when the program is at risk of improper behavior
+- Exceptions should be reserved for situations that cannot be handled through normal control flow
+- For expected conditions and validation, prefer explicit checks and error handling without exceptions
+
+## Language Corrections
+
+- Always correct any linguistic mistakes (grammar, spelling, etc.) found in prompts and code
+- The user is not a native English speaker and welcomes corrections
+- Provide corrections politely while fulfilling the main request
