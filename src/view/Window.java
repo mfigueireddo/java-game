@@ -11,10 +11,11 @@ public class Window extends JFrame {
         if (instance == null) {
             instance = new Window();
         }
-        return instance;
+        return instance;                        
     }
 
     private final Menu menu = Menu.GetInstance();
+    private final Game game = Game.GetInstance();
     
     private Window() {
         this.setTitle("Java 2D Game");
@@ -26,6 +27,7 @@ public class Window extends JFrame {
         this.setVisible(true);
     }
 
+    // TODO: this logic resizes the window each time its called
     private void ChangePanel(JPanel panel){
         this.getContentPane().removeAll();
         this.add(panel);
@@ -38,4 +40,9 @@ public class Window extends JFrame {
     public void ShowMenu(){
         ChangePanel(menu);
     }
+
+    public void ShowGame(){
+        ChangePanel(game);
+    }
+
 }

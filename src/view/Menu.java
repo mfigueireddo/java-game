@@ -23,7 +23,7 @@ public class Menu extends Panel {
     private final JButton load_game = new JButton("Load Game");
     private final JButton settings = new JButton("Settings");
 
-    private Menu() {
+    private Menu() {    
         super();
 
         this.setBackground(Color.WHITE);
@@ -34,7 +34,7 @@ public class Menu extends Panel {
 
         // Temporary behavior while the proper actions aren't implemented
         final boolean should_enable_buttons = false;
-        new_game.setEnabled(should_enable_buttons);
+        // new_game.setEnabled(should_enable_buttons);
         load_game.setEnabled(should_enable_buttons);
         settings.setEnabled(should_enable_buttons);
     }
@@ -118,8 +118,10 @@ public class Menu extends Panel {
         this.add(buttons_vbox);
     }
 
+    // TODO: notification system
+
     private void OnNewGame() {
-        // TODO: Implement new game logic
+        // TODO: Implement load game logic 
     }
 
     private void OnLoadGame() {

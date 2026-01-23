@@ -1,12 +1,16 @@
 package controller;
 
+import view.ViewAPI;
 import view.Window;
 
 public class GameRunner {
 
-    static Window window;
+    static ViewAPI view;
+
     public static void main(String[] args) {
-        window = Window.GetInstance();
+        view = ViewAPI.GetInstance();
+
+        final Window window = view.GetWindow();
         window.ShowMenu();
     }
 }
