@@ -56,7 +56,6 @@ This document defines the **coding standards, conventions, and best practices** 
 - Local variables, instance variables, and parameters should use snake_case
 - Constants should use UPPER_SNAKE_CASE
 - () that contains other () inside of it must keep one " " of distance between the parentheses - like "if ( !observers.containsKey(notification) )"
-- Same () behavior with <> - like "Map<Notification, List<Runnable>>"
 
 ## Singleton Pattern
 

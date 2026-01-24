@@ -10,5 +10,4 @@ public enum Notification{
     public int GetID() {
         return this.ordinal();
     }
-
 }

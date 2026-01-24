@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Observer{
-
     private static Observer instance;
 
     public static Observer GetInstance(){
@@ -63,5 +62,4 @@ public class Observer{
         }
         return true;
     }
-
 }
