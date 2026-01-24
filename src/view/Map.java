@@ -14,7 +14,7 @@ public class Map extends Renderer{
     }
 
     private Map(){}
-
+    
     @Override
     public void Render(final Graphics2D graphics_2d, final int screen_width, final int screen_height){
         // Temporary implementation just to check if the class is working properly
