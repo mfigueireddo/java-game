@@ -1,10 +1,10 @@
-package view;
+package view.panels;
 
+import controller.ErrorStatus;
+import controller.Observer;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
-import management.ErrorStatus;
-import management.Observer;
 
 public abstract class Panel extends JPanel {
 

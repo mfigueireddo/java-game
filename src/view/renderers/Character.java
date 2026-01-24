@@ -1,4 +1,4 @@
-package view;
+package view.renderers;
 
 import java.awt.Graphics2D;
 
@@ -20,5 +20,4 @@ public class Character extends Renderer{
     public void Render(final Graphics2D graphics_2d, final int screen_width, final int screen_height){
 
     }
-
 }

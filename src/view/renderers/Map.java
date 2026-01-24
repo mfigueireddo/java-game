@@ -1,4 +1,4 @@
-package view;
+package view.renderers;
 
 import java.awt.Graphics2D;
 
@@ -21,5 +21,4 @@ public class Map extends Renderer{
         graphics_2d.setColor(java.awt.Color.BLACK);
         graphics_2d.fillRect(0, 0, screen_width, screen_height);
     }
-
 }

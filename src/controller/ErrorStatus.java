@@ -1,4 +1,4 @@
-package management;
+package controller;
 
 public enum ErrorStatus {
     SUCCESS("Success"),

@@ -1,8 +1,6 @@
 package controller;
 
-import management.ImageLoader;
-import management.Notification;
-import management.Observer;
+import controller.loaders.ImageLoader;
 import view.ViewAPI;
 import view.Window;
 

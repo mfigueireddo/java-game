@@ -1,9 +1,10 @@
-package view;
+package view.panels;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import view.renderers.Character;
+import view.renderers.Map;
 
-// TODO: review classes' privacy
 public class Game extends Panel{
 
     private static Game instance;

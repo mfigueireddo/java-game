@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import view.panels.Game;
+import view.panels.Menu;
 
 public class Window extends JFrame {
     
@@ -43,5 +45,4 @@ public class Window extends JFrame {
     public void ShowGame(){
         ChangePanel(game);
     }
-
 }

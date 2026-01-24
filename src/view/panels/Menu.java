@@ -1,5 +1,6 @@
-package view;
+package view.panels;
 
+import controller.Notification;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -7,7 +8,6 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
-import management.Notification;
 
 public class Menu extends Panel {
 

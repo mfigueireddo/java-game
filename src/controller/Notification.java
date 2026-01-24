@@ -1,4 +1,4 @@
-package management;
+package controller;
 
 public enum Notification{
     NEW_GAME,
