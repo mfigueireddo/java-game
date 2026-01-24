@@ -16,10 +16,4 @@ public class ViewAPI{
     private static final Window window = Window.GetInstance();
     public Window GetWindow(){ return window; }
 
-    private static final Map map = Map.GetInstance();
-    public Map GetMap(){ return map; }
-
-    private static final Character character = Character.GetInstance();
-    public Character GetCharacter(){ return character; }
-
 }

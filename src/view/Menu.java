@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
+import management.Notification;
 
 public class Menu extends Panel {
 
@@ -118,18 +119,16 @@ public class Menu extends Panel {
         this.add(buttons_vbox);
     }
 
-    // TODO: notification system
-
     private void OnNewGame() {
-        // TODO: Implement load game logic 
+        observer.Notify(Notification.NEW_GAME);
     }
 
     private void OnLoadGame() {
-        // TODO: Implement load game logic
+        observer.Notify(Notification.LOAD_GAME);
     }
 
     private void OnSettings() {
-        // TODO: Implement settings logic
+        observer.Notify(Notification.SETTINGS);
     }
 
 }

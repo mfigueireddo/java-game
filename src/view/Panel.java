@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 import management.ErrorStatus;
+import management.Observer;
 import management.Wrappers;
 
 public abstract class Panel extends JPanel {
@@ -13,6 +14,8 @@ public abstract class Panel extends JPanel {
 
     private int screen_width;
     private int screen_height;
+
+    protected Observer observer;
 
     protected Panel() {
         Dimension screen_size = Toolkit.getDefaultToolkit().getScreenSize();
@@ -28,6 +31,8 @@ public abstract class Panel extends JPanel {
             System.exit(ErrorStatus.MIN_SCREEN_SIZE.GetExitCode());
         }
         this.setPreferredSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+
+        observer = Observer.GetInstance();
     }
 
     // TODO: look for something like C++ std::pair to return the screen dimensions

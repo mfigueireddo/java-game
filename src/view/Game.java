@@ -3,6 +3,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+// TODO: review classes' privacy
 public class Game extends Panel{
 
     private static Game instance;
@@ -14,14 +15,16 @@ public class Game extends Panel{
         return instance;
     }
 
+    private final Map map = Map.GetInstance();
+    private final Character character = Character.GetInstance();
+
+    private Game(){}
+
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
         final Graphics2D graphics_2d = (Graphics2D)graphics;
-        final ViewAPI view_api = ViewAPI.GetInstance();
-        final Map map = view_api.GetMap();
-        final Character character = view_api.GetCharacter();
 
         map.Render(graphics_2d, GetScreenWidth(), GetScreenHeight());
         character.Render(graphics_2d, GetScreenWidth(), GetScreenHeight());
