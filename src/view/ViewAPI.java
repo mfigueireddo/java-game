@@ -11,9 +11,10 @@ public class ViewAPI{
         return instance;
     }
 
+    private static final Window window = Window.GetInstance();
+
     private ViewAPI(){}
 
-    private static final Window window = Window.GetInstance();
     public Window GetWindow(){ return window; }
 
 }

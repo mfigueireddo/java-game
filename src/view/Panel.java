@@ -5,7 +5,6 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 import management.ErrorStatus;
 import management.Observer;
-import management.Wrappers;
 
 public abstract class Panel extends JPanel {
 
@@ -19,30 +18,43 @@ public abstract class Panel extends JPanel {
 
     protected Panel() {
         Dimension screen_size = Toolkit.getDefaultToolkit().getScreenSize();
-        // TODO: is it safer to store this info AFTER the wrapping?
-        screen_width = screen_size.width;
-        screen_height = screen_size.height;
-        try {
-            Wrappers.VerifyMinValue(screen_width, MIN_WIDTH);
-            Wrappers.VerifyMinValue(screen_height, MIN_HEIGHT);
-        } 
-        catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-            System.exit(ErrorStatus.MIN_SCREEN_SIZE.GetExitCode());
+        this.screen_width = screen_size.width;
+        this.screen_height = screen_size.height;
+        if (this.screen_width < MIN_WIDTH || this.screen_height < MIN_HEIGHT){
+            final ErrorStatus error = ErrorStatus.MIN_SCREEN_SIZE;
+            System.err.println("Error: " + error.GetErrorMessage() + " - " + screen_width + "x" + screen_height);
+            System.exit( error.GetExitCode() );
         }
-        this.setPreferredSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+
+        this.setPreferredSize(new Dimension(screen_width, screen_height));
 
         observer = Observer.GetInstance();
     }
-
-    // TODO: look for something like C++ std::pair to return the screen dimensions
 
     public int GetScreenWidth(){
         return screen_width;
     }
 
+    public boolean SetScreenWidth(int screen_width){
+        if (screen_width < MIN_WIDTH){
+            return false;
+        }
+
+        this.screen_width = screen_width;
+        return true;
+    }
+
     public int GetScreenHeight(){
         return screen_height;
+    }
+
+    public boolean SetScreenHeight(int screen_height){
+        if (screen_height < MIN_HEIGHT){
+            return false;
+        }
+
+        this.screen_height = screen_height;
+        return true;
     }
 
 }
