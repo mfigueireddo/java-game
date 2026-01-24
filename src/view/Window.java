@@ -21,17 +21,16 @@ public class Window extends JFrame {
         this.setTitle("Java 2D Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
+        this.pack(); this.setLocationRelativeTo(null);
     }
 
     private void Show(){
         this.setVisible(true);
     }
 
-    // TODO: this logic resizes the window each time its called
     private void ChangePanel(JPanel panel){
         this.getContentPane().removeAll();
         this.add(panel);
-        this.pack(); this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.revalidate(); this.repaint();
         this.Show();
