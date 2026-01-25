@@ -11,10 +11,10 @@ public abstract class Controller {
     }
     
     public int GetID() {
-        return this.id;
+        return id;
     }
     
     public String GetName() {
-        return this.name;
+        return name;
     }
 }

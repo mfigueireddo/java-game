@@ -36,6 +36,10 @@ public class ImageManager extends Manager{
         return (ImageController) GetController(id);
     }
 
+    public ImageController GetImage(final String name){
+        return (ImageController) GetController(name);
+    }
+
     public ArrayList<ImageController> GetImages(){
         final ArrayList<Controller> controllers = GetControllers();
         final ArrayList<ImageController> images = new ArrayList<>();

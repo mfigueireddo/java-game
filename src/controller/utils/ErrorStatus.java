@@ -8,7 +8,9 @@ public enum ErrorStatus {
     IMAGE_NOT_FOUND("The image wasn't loaded"),
     TEXTFILE_NOT_FOUND_OR_UNSUPPORTED_FORMAT("The textfile wasn't found OR it has an unsupported format"),
     FAILED_LOADING_TEXTFILE("The textfile's file is corrupted"),
-    TEXTFILE_NOT_FOUND("The textfile wasn't loaded");
+    TEXTFILE_NOT_FOUND("The textfile wasn't loaded"),
+    EMPTY_TEXTFILE("A necessary textfile is empty"),
+    UNRECOGNIZED_MAP_ELEMENT("A unrecognized element was found during map loading");
 
     private final String error_message;
 
@@ -21,6 +23,6 @@ public enum ErrorStatus {
     }
 
     public String GetErrorMessage(){
-        return this.error_message;
+        return error_message;
     }
 }

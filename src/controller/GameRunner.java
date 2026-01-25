@@ -3,12 +3,10 @@ package controller;
 import controller.loaders.ImageLoader;
 import controller.loaders.TextFileLoader;
 import view.ViewAPI;
-import view.Window;
 
 public class GameRunner {
 
     static ViewAPI view;
-    static Window window;
     
     static ImageLoader image_loader;
     static TextFileLoader textfile_loader;
@@ -28,9 +26,8 @@ public class GameRunner {
 
     private static void Run(){
         view = ViewAPI.GetInstance();
-        window = view.GetWindow();
-        
-        window.ShowMenu();
+
+        view.ShowMenu();
     }
 
     private static void ShutDown(){

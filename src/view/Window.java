@@ -26,10 +26,10 @@ public class Window extends JFrame {
     private Window() {
         RegisterObservers();
 
-        this.setTitle("Java 2D Game");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(true);
-        this.pack(); this.setLocationRelativeTo(null);
+        setTitle("Java 2D Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        pack(); setLocationRelativeTo(null);
     }
 
     private void RegisterObservers(){
@@ -37,15 +37,18 @@ public class Window extends JFrame {
     }
 
     private void Show(){
-        this.setVisible(true);
+        setVisible(true);
     }
 
     private void ChangePanel(JPanel panel){
-        this.getContentPane().removeAll();
-        this.add(panel);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.revalidate(); this.repaint();
-        this.Show();
+        getContentPane().removeAll();
+        add(panel);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        revalidate(); repaint();
+
+        observer.Notify(Notification.WINDOW_RESIZED);
+        
+        Show();
     }
 
     public void ShowMenu(){

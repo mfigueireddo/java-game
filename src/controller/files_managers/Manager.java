@@ -21,11 +21,11 @@ public abstract class Manager {
     }
 
     protected void RegisterControllers(final FolderController folder_controller, final ArrayList<Controller> controllers){
-        this.resources.put(folder_controller, controllers);
+        resources.put(folder_controller, controllers);
     }
 
     public Controller GetController(final int id){
-        for (ArrayList<Controller> controllers : this.resources.values()){
+        for (ArrayList<Controller> controllers : resources.values()){
             for (Controller controller : controllers){
                 if (controller.GetID() == id){
                     return controller;
@@ -35,19 +35,39 @@ public abstract class Manager {
         return null;
     }
 
+    public Controller GetController(final String name){
+        for (ArrayList<Controller> controllers : resources.values()){
+            for (Controller controller : controllers){
+                if (controller.GetName().equals(name)){
+                    return controller;
+                }
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Controller> GetControllers(){
         final ArrayList<Controller> all_controllers = new ArrayList<>();
-        for (ArrayList<Controller> controllers : this.resources.values()){
+        for (ArrayList<Controller> controllers : resources.values()){
             all_controllers.addAll(controllers);
         }
         return all_controllers;
     }
 
+    public String GetFileFullName(Controller controller){
+        for (Map.Entry<FolderController, ArrayList<Controller>> entry : resources.entrySet()){
+            if ( entry.getValue().contains(controller) ){
+                return controller.GetName() + extension;
+            }
+        }
+        return null;
+    }
+
     public String GetFilePath(Controller controller){
-        for (Map.Entry<FolderController, ArrayList<Controller>> entry : this.resources.entrySet()){
+        for (Map.Entry<FolderController, ArrayList<Controller>> entry : resources.entrySet()){
             if ( entry.getValue().contains(controller) ){
                 final FolderController folder = entry.getKey();
-                return this.directory + folder.GetName() + controller.GetName() + this.extension;
+                return directory + folder.GetName() + controller.GetName() + extension;
             }
         }
         return null;

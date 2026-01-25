@@ -1,6 +1,7 @@
 package view.renderers;
 
 import java.awt.Graphics2D;
+import view.panels.Panel;
 
 public class Character extends Renderer{
 
@@ -17,7 +18,7 @@ public class Character extends Renderer{
     private Character(){}
 
     @Override
-    public void Render(final Graphics2D graphics_2d, final int screen_width, final int screen_height){
+    public void Render(final Graphics2D graphics_2d, final Panel panel){
 
     }
 }

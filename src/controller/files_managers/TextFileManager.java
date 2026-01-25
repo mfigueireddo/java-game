@@ -32,17 +32,21 @@ public class TextFileManager extends Manager{
         RegisterControllers(folder, maps);
     }
 
-    public TextFileController GetImage(final int id){
+    public TextFileController GetTextFile(final int id){
         return (TextFileController) GetController(id);
     }
 
-    public ArrayList<TextFileController> GetMaps(){
+    public TextFileController GetTextFile(final String name){
+        return (TextFileController) GetController(name);
+    }
+
+    public ArrayList<TextFileController> GetTextFiles(){
         final ArrayList<Controller> controllers = GetControllers();
-        final ArrayList<TextFileController> maps = new ArrayList<>();
+        final ArrayList<TextFileController> textfiles = new ArrayList<>();
         
         for (Controller controller : controllers){
-            maps.add( (TextFileController) controller );
+            textfiles.add( (TextFileController) controller );
         }
-        return maps;
+        return textfiles;
     }
 }

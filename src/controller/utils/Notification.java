@@ -5,7 +5,8 @@ public enum Notification{
     LOAD_GAME,
     SETTINGS,
     IMAGE_LOADING_FAILED,
-    IMAGE_NOT_FOUND;
+    IMAGE_NOT_FOUND,
+    WINDOW_RESIZED;
 
     public int GetID() {
         return this.ordinal();

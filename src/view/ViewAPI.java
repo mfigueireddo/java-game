@@ -15,5 +15,7 @@ public class ViewAPI{
 
     private ViewAPI(){}
 
-    public Window GetWindow(){ return window; }
+    public void ShowMenu(){ 
+        window.ShowMenu(); 
+    }
 }

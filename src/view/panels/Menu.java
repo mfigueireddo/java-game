@@ -1,6 +1,7 @@
 package view.panels;
 
 import controller.utils.Notification;
+import controller.utils.Observer;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -20,6 +21,8 @@ public class Menu extends Panel {
         return instance;
     }
 
+    private final Observer observer = Observer.GetInstance();
+
     private final JButton new_game = new JButton("New Game");
     private final JButton load_game = new JButton("Load Game");
     private final JButton settings = new JButton("Settings");
@@ -27,8 +30,8 @@ public class Menu extends Panel {
     private Menu() {    
         super();
 
-        this.setBackground(Color.WHITE);
-        this.setLayout(new GridBagLayout());
+        setBackground(Color.WHITE);
+        setLayout(new GridBagLayout());
 
         SetupButtons();
         SetupButtonsVBox();
@@ -116,7 +119,7 @@ public class Menu extends Panel {
         buttons_vbox.add(Box.createRigidArea(new Dimension(buttons_vbox_width_padding , buttons_vbox_height_padding)));
         buttons_vbox.add(settings);
 
-        this.add(buttons_vbox);
+        add(buttons_vbox);
     }
 
     private void OnNewGame() {
@@ -130,5 +133,4 @@ public class Menu extends Panel {
     private void OnSettings() {
         observer.Notify(Notification.SETTINGS);
     }
-
 }
