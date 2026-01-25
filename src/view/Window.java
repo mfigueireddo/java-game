@@ -1,7 +1,7 @@
 package view;
 
-import controller.Notification;
-import controller.Observer;
+import controller.utils.Notification;
+import controller.utils.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import view.panels.Game;

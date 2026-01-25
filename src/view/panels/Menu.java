@@ -1,6 +1,6 @@
 package view.panels;
 
-import controller.Notification;
+import controller.utils.Notification;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;

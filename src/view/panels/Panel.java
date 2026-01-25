@@ -1,7 +1,7 @@
 package view.panels;
 
-import controller.ErrorStatus;
-import controller.Observer;
+import controller.utils.ErrorStatus;
+import controller.utils.Observer;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;

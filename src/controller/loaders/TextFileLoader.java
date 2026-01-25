@@ -1,11 +1,11 @@
 package controller.loaders;
 
-import controller.ErrorStatus;
-import controller.GameExit;
 import controller.files_controllers.Controller;
 import controller.files_controllers.TextFileController;
 import controller.files_managers.Manager;
 import controller.files_managers.TextFileManager;
+import controller.utils.ErrorStatus;
+import controller.utils.GameExit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

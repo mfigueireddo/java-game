@@ -1,4 +1,4 @@
-package controller;
+package controller.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

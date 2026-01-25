@@ -1,11 +1,11 @@
 package controller.loaders;
 
-import controller.ErrorStatus;
-import controller.GameExit;
 import controller.files_controllers.Controller;
 import controller.files_controllers.ImageController;
 import controller.files_managers.ImageManager;
 import controller.files_managers.Manager;
+import controller.utils.ErrorStatus;
+import controller.utils.GameExit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

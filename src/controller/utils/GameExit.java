@@ -1,4 +1,4 @@
-package controller;
+package controller.utils;
 
 public class GameExit {
     
