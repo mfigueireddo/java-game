@@ -35,7 +35,7 @@ public class ImageLoader extends Loader<BufferedImage>{
     @Override
     protected BufferedImage LoadData(final Controller image_controller, final String file_path){
         try {
-            File image_file = new File(file_path);
+            final File image_file = new File(file_path);
             if ( !image_file.exists() ) {
                 GameExit.Exit(ErrorStatus.IMAGE_NOT_FOUND_OR_UNSUPPORTED_FORMAT, " - " + file_path);
             }
