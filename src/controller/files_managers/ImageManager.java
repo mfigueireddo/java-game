@@ -20,6 +20,7 @@ public class ImageManager extends Manager{
         super("src/images/", ".png");
 
         RegisterWorldImages();
+        RegisterMainCharacter();
     }
 
     // TODO: maybe this could be even more generic
@@ -28,6 +29,19 @@ public class ImageManager extends Manager{
 
         final ArrayList<Controller> images = new ArrayList<>();
         images.add(new ImageController("grass"));
+
+        RegisterControllers(folder, images);
+    }
+
+    // The current implementation of FolderController doesn't allow having folders inside other folders
+    private void RegisterMainCharacter(){
+        final FolderController folder = new FolderController("main_character/");
+
+        final ArrayList<Controller> images = new ArrayList<>();
+        images.add(new ImageController("back"));
+        images.add(new ImageController("front"));
+        images.add(new ImageController("left"));
+        images.add(new ImageController("right"));
 
         RegisterControllers(folder, images);
     }

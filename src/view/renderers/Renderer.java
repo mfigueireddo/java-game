@@ -20,7 +20,6 @@ public abstract class Renderer{
     protected final TextFileLoader textfile_loader = TextFileLoader.GetInstance();
     protected final ImageLoader image_loader = ImageLoader.GetInstance();
 
-
     // Keeping the buffered used images saves time - better than using image_loader.GetImage() all the time when rendering
     // This way the image is duplicated, but it's still better than transfering the data all the time when rendering
     // TODO: actually, check if what is said above it's true - maybe in BufferedImage's works with pointers...
