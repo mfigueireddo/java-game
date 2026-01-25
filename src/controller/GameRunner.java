@@ -9,26 +9,32 @@ public class GameRunner {
 
     static ViewAPI view;
     static Window window;
-
-    static Observer observer;
     
     static ImageLoader image_loader;
     static TextFileLoader textfile_loader;
 
     public static void main(String[] args) {
-        view = ViewAPI.GetInstance();
-        window = view.GetWindow();
+        StartUp();
 
-        RegisterObservers();
+        Run();
+
+        ShutDown();
+    }
+
+    private static void StartUp(){
         LoadImages();
         LoadTextFiles();
+    }
 
+    private static void Run(){
+        view = ViewAPI.GetInstance();
+        window = view.GetWindow();
+        
         window.ShowMenu();
     }
 
-    private static void RegisterObservers(){
-        observer = Observer.GetInstance();
-        observer.Register(Notification.NEW_GAME, window::ShowGame);
+    private static void ShutDown(){
+
     }
 
     private static void LoadImages(){
