@@ -22,3 +22,7 @@ Gravar vídeo com versão 0.1 e todas as seguintes
 mecanismo que lê todas as imagens e escreve nome e id em um txt
 
 consoleg log nos construtores e ver a hierarquia de inicialização
+
+when creating settings, have a ? tip that shows a description for the correspondent setting
+
+thread follower - show at the screen at is happening behing the scenes
