@@ -1,12 +1,46 @@
 package controller;
 
-import view.Window;
+import controller.loaders.ImageLoader;
+import controller.loaders.TextFileLoader;
+import view.ViewAPI;
 
 public class GameRunner {
 
-    static Window window;
+    static ViewAPI view;
+    
+    static ImageLoader image_loader;
+    static TextFileLoader textfile_loader;
+
     public static void main(String[] args) {
-        window = Window.GetInstance();
-        window.ShowMenu();
+        StartUp();
+
+        Run();
+
+        ShutDown();
+    }
+
+    private static void StartUp(){
+        LoadImages();
+        LoadTextFiles();
+    }
+
+    private static void Run(){
+        view = ViewAPI.GetInstance();
+
+        view.ShowMenu();
+    }
+
+    private static void ShutDown(){
+
+    }
+
+    private static void LoadImages(){
+        image_loader = ImageLoader.GetInstance();
+        image_loader.Load();
+    }
+
+    private static void LoadTextFiles(){
+        textfile_loader = TextFileLoader.GetInstance();
+        textfile_loader.Load();
     }
 }

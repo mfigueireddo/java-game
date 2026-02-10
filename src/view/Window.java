@@ -1,7 +1,11 @@
 package view;
 
+import controller.utils.Notification;
+import controller.utils.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import view.panels.Game;
+import view.panels.Menu;
 
 public class Window extends JFrame {
     
@@ -11,31 +15,47 @@ public class Window extends JFrame {
         if (instance == null) {
             instance = new Window();
         }
-        return instance;
+        return instance;                        
     }
 
+    private final Observer observer = Observer.GetInstance();
+    
     private final Menu menu = Menu.GetInstance();
+    private final Game game = Game.GetInstance();
     
     private Window() {
-        this.setTitle("Java 2D Game");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(true);
+        RegisterObservers();
+
+        setTitle("Java 2D Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        pack(); setLocationRelativeTo(null);
+    }
+
+    private void RegisterObservers(){
+        observer.Register(Notification.NEW_GAME, this::ShowGame);
     }
 
     private void Show(){
-        this.setVisible(true);
+        setVisible(true);
     }
 
     private void ChangePanel(JPanel panel){
-        this.getContentPane().removeAll();
-        this.add(panel);
-        this.pack(); this.setLocationRelativeTo(null);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.revalidate(); this.repaint();
-        this.Show();
+        getContentPane().removeAll();
+        add(panel);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        revalidate(); repaint();
+
+        observer.Notify(Notification.WINDOW_RESIZED);
+        
+        Show();
     }
 
     public void ShowMenu(){
         ChangePanel(menu);
+    }
+
+    public void ShowGame(){
+        ChangePanel(game);
     }
 }

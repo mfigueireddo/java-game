@@ -1,5 +1,7 @@
-package view;
+package view.panels;
 
+import controller.utils.Notification;
+import controller.utils.Observer;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -19,22 +21,24 @@ public class Menu extends Panel {
         return instance;
     }
 
+    private final Observer observer = Observer.GetInstance();
+
     private final JButton new_game = new JButton("New Game");
     private final JButton load_game = new JButton("Load Game");
     private final JButton settings = new JButton("Settings");
 
-    private Menu() {
+    private Menu() {    
         super();
 
-        this.setBackground(Color.WHITE);
-        this.setLayout(new GridBagLayout());
+        setBackground(Color.WHITE);
+        setLayout(new GridBagLayout());
 
         SetupButtons();
         SetupButtonsVBox();
 
         // Temporary behavior while the proper actions aren't implemented
         final boolean should_enable_buttons = false;
-        new_game.setEnabled(should_enable_buttons);
+        // new_game.setEnabled(should_enable_buttons);
         load_game.setEnabled(should_enable_buttons);
         settings.setEnabled(should_enable_buttons);
     }
@@ -115,19 +119,18 @@ public class Menu extends Panel {
         buttons_vbox.add(Box.createRigidArea(new Dimension(buttons_vbox_width_padding , buttons_vbox_height_padding)));
         buttons_vbox.add(settings);
 
-        this.add(buttons_vbox);
+        add(buttons_vbox);
     }
 
     private void OnNewGame() {
-        // TODO: Implement new game logic
+        observer.Notify(Notification.NEW_GAME);
     }
 
     private void OnLoadGame() {
-        // TODO: Implement load game logic
+        observer.Notify(Notification.LOAD_GAME);
     }
 
     private void OnSettings() {
-        // TODO: Implement settings logic
+        observer.Notify(Notification.SETTINGS);
     }
-
 }
