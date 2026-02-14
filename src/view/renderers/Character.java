@@ -9,10 +9,13 @@ import view.panels.Panel;
 
 /**
  * Description:
- * 1. Singleton renderer responsible for loading and rendering the player character.
- * 2. Loads directional character sprite images (front, back, left, right) into the
- *    used_images cache.
- * 3. Rendering logic is not yet implemented.
+ * Singleton renderer responsible for loading and rendering the player character.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it:
+ *   1. Extends Renderer (public class)
+ *   2. Is instantiated and used by Game panel to render the character
+ *   3. Provides public LoadMainCharacter(), LoadCharacter(), and Render() methods for future use
  */
 public class Character extends Renderer{
 

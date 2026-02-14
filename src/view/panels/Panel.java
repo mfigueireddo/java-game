@@ -8,9 +8,11 @@ import javax.swing.JPanel;
 /**
  * Description:
  * Abstract base class for all game panels/screens, extending JPanel.
- *
- * Restrictions:
- * - Exits the application with MIN_SCREEN_SIZE if the screen is below 800x600.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This abstract base class MUST be public as it:
+ *   1. Extends JPanel (a public Swing class)
+ *   2. Is extended by panel subclasses (Menu, Game) used throughout the view package
  */
 public abstract class Panel extends JPanel {
 

@@ -2,12 +2,13 @@ package controller.utils;
 
 /**
  * Description:
- * 1. Utility class providing centralized error-based application exit.
- * 2. Formats and prints error messages to stderr, then exits with the corresponding error code.
- * 3. Private constructor prevents instantiation.
- *
- * Restrictions:
- * - This class must not be instantiated; all methods are static.
+ * Utility class providing centralized error-based application exit.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it is:
+ *   1. Used cross-package by loaders and renderers for error handling
+ *   2. Provides static Exit() methods accessed from multiple subsystems
+ *   3. Central utility for consistent error reporting throughout the application
  */
 public class GameExit {
     

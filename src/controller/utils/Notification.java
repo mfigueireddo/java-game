@@ -2,9 +2,12 @@ package controller.utils;
 
 /**
  * Description:
- * 1. Enum defining all notification types for the observer system.
- * 2. Each constant represents a distinct event that components can register for and react to.
- * 3. Uses the ordinal value as a unique notification ID.
+ * Enum defining all notification types for the observer system.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This enum MUST be public as it is:
+ *   1. Used cross-package by both controller and view packages
+ *   2. Required by Observer.Register() and Observer.Notify() methods used throughout the application
  */
 public enum Notification{
     NEW_GAME,

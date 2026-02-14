@@ -7,10 +7,13 @@ import java.util.Map;
 
 /**
  * Description:
- * 1. Singleton central event/notification system for decoupled component communication.
- * 2. Maintains a map of Notification to lists of Runnable callbacks.
- * 3. Components register interest in specific notifications and are invoked when
- *    those notifications are triggered.
+ * Singleton central event/notification system for decoupled component communication.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it is:
+ *   1. Accessed cross-package from both controller and view packages
+ *   2. Used by Window, Game, Menu panels to register/notify events
+ *   3. Provides singleton instance to multiple subsystems for inter-component communication
  */
 public class Observer{
     private static Observer instance;

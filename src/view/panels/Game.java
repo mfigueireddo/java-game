@@ -9,8 +9,13 @@ import view.renderers.Map;
 
 /**
  * Description:
- * 1. Singleton main game screen extending Panel where gameplay rendering occurs.
- * 2. Delegates rendering to Map and Character renderers via paintComponent().
+ * Singleton main game screen extending Panel where gameplay rendering occurs.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it:
+ *   1. Extends Panel (public class)
+ *   2. Is instantiated and managed by Window
+ *   3. Provides singleton instance accessed by Window for panel switching
  */
 public class Game extends Panel{
 

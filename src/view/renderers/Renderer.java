@@ -11,12 +11,12 @@ import view.panels.Panel;
 
 /**
  * Description:
- * 1. Abstract base class for all game renderers.
- * 2. Stores screen dimensions used for rendering calculations.
- * 3. Holds references to resource managers and loaders for convenient access by subclasses.
- * 4. Caches frequently used BufferedImage references in a local map for performance,
- *    avoiding repeated lookups through the loader during rendering.
- * 5. Subclasses (Map, Character) implement the Render() method with their specific logic.
+ * Abstract base class for all game renderers.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This abstract base class MUST be public as it:
+ *   1. Is extended by renderer subclasses (Map, Character) accessed from Game panel
+ *   2. Provides public Render() and SetScreenSize() methods called from panels
  */
 public abstract class Renderer{
 

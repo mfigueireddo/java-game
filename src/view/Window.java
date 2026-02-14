@@ -11,6 +11,10 @@ import view.panels.Menu;
  * Description:
  * 1. Singleton main game window extending JFrame.
  * 2. Manages the application window lifecycle including panel switching and window configuration.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it extends JFrame (a public Swing class).
+ * - It is accessed from the view package (ViewAPI) and manages the main application window.
  */
 public class Window extends JFrame {
     

@@ -8,16 +8,12 @@ import java.util.Map;
 
 /**
  * Description:
- * 1. Abstract base class that simplifies file management by organizing resources
- *    into folder-based groups.
- * 2. Stores a map of FolderController to lists of Controller instances.
- * 3. Provides lookup by ID or name, path resolution, and full file name construction.
- * 4. Subclasses (ImageManager, TextFileManager) register their specific resources
- *    during construction.
- *
- * Restrictions:
- * - Every file must belong to a specific folder.
- * - Only one file extension is supported per Manager subclass.
+ * Abstract base class that simplifies file management by organizing resources into folder-based groups.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This abstract base class MUST be public as it is:
+ *   1. Extended by manager subclasses (ImageManager, TextFileManager) accessed cross-package
+ *   2. Provides public methods (GetController, GetFilePath, etc.) used by Loaders and Renderers
  */
 public abstract class Manager {
     private final String directory;

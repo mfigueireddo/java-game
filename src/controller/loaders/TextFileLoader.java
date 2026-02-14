@@ -13,10 +13,13 @@ import java.io.IOException;
 
 /**
  * Description:
- * 1. Singleton loader responsible for loading text files from disk using BufferedReader.
- * 2. Extends Loader with String as the data type.
- * 3. Uses TextFileManager as its corresponding manager for file path resolution.
- * 4. Exits the application with descriptive error codes when text files are missing or corrupted.
+ * Singleton loader responsible for loading text files from disk using BufferedReader.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it is:
+ *   1. Accessed from GameRunner to load text files at startup via Load()
+ *   2. Accessed cross-package from view.renderers to retrieve loaded text files via GetTextFile()
+ *   3. Provides singleton instance to multiple subsystems
  */
 public class TextFileLoader extends Loader<String>{
     private static TextFileLoader instance;

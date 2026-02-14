@@ -2,10 +2,13 @@ package controller.files_controllers;
 
 /**
  * Description:
- * 1. Abstract base class that provides a safe way to store and track files and folders.
- * 2. Each instance holds an immutable unique integer ID and a string name.
- * 3. Subclasses (FolderController, ImageController, TextFileController) provide
- *    auto-incrementing IDs for their respective resource types.
+ * Abstract base class that provides a safe way to store and track files and folders.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This abstract base class MUST be public as it is:
+ *   1. Extended by controller subclasses (FolderController, ImageController, TextFileController)
+ *   2. Used as a type parameter in Manager and Loader classes across packages
+ *   3. Returned by public Manager methods accessed cross-package
  */
 public abstract class Controller {
     private final int id;

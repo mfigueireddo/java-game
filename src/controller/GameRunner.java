@@ -4,6 +4,13 @@ import controller.loaders.ImageLoader;
 import controller.loaders.TextFileLoader;
 import view.ViewAPI;
 
+/**
+ * Main entry point for the Java 2D Game application.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it contains the main() method which serves as the application entry point.
+ * - It cannot be package-private as the JVM requires main() to be in a public class.
+ */
 public class GameRunner {
 
     private static ViewAPI view;

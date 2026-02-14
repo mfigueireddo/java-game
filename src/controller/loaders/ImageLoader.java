@@ -13,11 +13,13 @@ import javax.imageio.ImageIO;
 
 /**
  * Description:
- * 1. Singleton loader responsible for loading image files from disk using ImageIO.
- * 2. Extends Loader with BufferedImage as the data type.
- * 3. Uses ImageManager as its corresponding manager for file path resolution.
- * 4. Exits the application with descriptive error codes when images are missing,
- *    corrupted, or in unsupported formats.
+ * Singleton loader responsible for loading image files from disk using ImageIO.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it is:
+ *   1. Accessed from GameRunner to load images at startup via Load()
+ *   2. Accessed cross-package from view.renderers to retrieve loaded images via GetImage()
+ *   3. Provides singleton instance to multiple subsystems
  */
 public class ImageLoader extends Loader<BufferedImage>{
     private static ImageLoader instance;

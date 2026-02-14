@@ -7,8 +7,12 @@ import java.util.ArrayList;
 
 /**
  * Description:
- * 1. Singleton manager responsible for registering and organizing all text file resources.
- * 2. Extends Manager with directory "src/persistance/" and extension ".txt".
+ * Singleton manager responsible for registering and organizing all text file resources.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it is:
+ *   1. Accessed cross-package from view.renderers (Map) to retrieve text file metadata
+ *   2. Provides singleton instance via GetInstance() to multiple subsystems
  */
 public class TextFileManager extends Manager{
 

@@ -2,9 +2,13 @@ package controller.utils;
 
 /**
  * Description:
- * 1. Enum defining all application error states with descriptive messages.
- * 2. Each constant carries an error message and uses its ordinal value as the exit code.
- * 3. Used by GameExit to print formatted error messages and exit the application.
+ * Enum defining all application error states with descriptive messages.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This enum MUST be public as it is:
+ *   1. Used cross-package by loaders and renderers for error handling
+ *   2. Required by GameExit.Exit() method used throughout the application
+ *   3. Used by Panel class for screen size validation
  */
 public enum ErrorStatus {
     SUCCESS("Success"),

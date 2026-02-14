@@ -10,11 +10,13 @@ import view.panels.Panel;
 
 /**
  * Description:
- * 1. Singleton renderer responsible for parsing and rendering tile-based maps from text files.
- * 2. Loads map data from text files, parses tile IDs, resolves corresponding images,
- *    and renders the full map as a grid of tiles.
- * 3. Calculates tile (block) dimensions based on screen size and map dimensions.
- * 4. Currently renders the entire map to fill the screen (no viewport implemented yet).
+ * Singleton renderer responsible for parsing and rendering tile-based maps from text files.
+ * 
+ * PUBLIC API JUSTIFICATION:
+ * - This class MUST be public as it:
+ *   1. Extends Renderer (public class)
+ *   2. Is instantiated and used by Game panel to render maps
+ *   3. Provides public LoadMainMap(), CalculateBlockDimensions(), and Render() methods accessed from Game
  */
 public class Map extends Renderer{
 
