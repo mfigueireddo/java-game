@@ -66,11 +66,11 @@ public class Window extends JFrame {
         Show();
     }
 
-    public void ShowMenu(){
+    protected void ShowMenu(){
         ChangePanel(menu);
     }
 
-    public void ShowGame(){
+    protected void ShowGame(){
         ChangePanel(game);
     }
 }
