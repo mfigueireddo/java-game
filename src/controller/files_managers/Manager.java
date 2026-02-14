@@ -6,7 +6,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// An abstraction to simplify files' management
+/**
+ * Description:
+ * 1. Abstract base class that simplifies file management by organizing resources
+ *    into folder-based groups.
+ * 2. Stores a map of FolderController to lists of Controller instances.
+ * 3. Provides lookup by ID or name, path resolution, and full file name construction.
+ * 4. Subclasses (ImageManager, TextFileManager) register their specific resources
+ *    during construction.
+ *
+ * Restrictions:
+ * - Every file must belong to a specific folder.
+ * - Only one file extension is supported per Manager subclass.
+ */
 public abstract class Manager {
     private final String directory;
     private final String extension; // At the moment, only one extension is supported per file type
@@ -15,11 +27,21 @@ public abstract class Manager {
     // Folder manipulation isn't important, therefore not implemented
     private final Map<FolderController, ArrayList<Controller>> resources = new HashMap<>();
 
+    /**
+     * Parameters:
+     * - directory: The base directory path for this resource type (e.g., "src/images/").
+     * - extension: The file extension including the dot (e.g., ".png", ".txt").
+     */
     protected Manager(final String directory, final String extension){
         this.directory = directory;
         this.extension = extension;
     }
 
+    /**
+     * Description:
+     * 1. Registers a group of controllers under the given folder controller.
+     * 2. Adds the folder-controllers mapping to the internal resources map.
+     */
     protected void RegisterControllers(final FolderController folder_controller, final ArrayList<Controller> controllers){
         resources.put(folder_controller, controllers);
     }
@@ -46,6 +68,11 @@ public abstract class Manager {
         return null;
     }
 
+    public ArrayList<Controller> GetFolderControllers(final FolderController folder){
+        final ArrayList<Controller> controllers = resources.get(folder);
+        return controllers != null ? controllers : new ArrayList<>();
+    }
+
     public ArrayList<Controller> GetControllers(){
         final ArrayList<Controller> all_controllers = new ArrayList<>();
         for (ArrayList<Controller> controllers : resources.values()){
@@ -54,6 +81,11 @@ public abstract class Manager {
         return all_controllers;
     }
 
+    /**
+     * Expected Returns:
+     * - Returns the file name with extension (e.g., "grass.png") when the controller is found.
+     * - Returns null when the controller is not registered in any folder.
+     */
     public String GetFileFullName(Controller controller){
         for (Map.Entry<FolderController, ArrayList<Controller>> entry : resources.entrySet()){
             if ( entry.getValue().contains(controller) ){
@@ -63,6 +95,11 @@ public abstract class Manager {
         return null;
     }
 
+    /**
+     * Expected Returns:
+     * - Returns the full file path (e.g., "src/images/world/grass.png") when the controller is found.
+     * - Returns null when the controller is not registered in any folder.
+     */
     public String GetFilePath(Controller controller){
         for (Map.Entry<FolderController, ArrayList<Controller>> entry : resources.entrySet()){
             if ( entry.getValue().contains(controller) ){

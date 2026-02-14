@@ -5,6 +5,11 @@ import controller.files_controllers.FolderController;
 import controller.files_controllers.ImageController;
 import java.util.ArrayList;
 
+/**
+ * Description:
+ * 1. Singleton manager responsible for registering and organizing all image resources.
+ * 2. Extends Manager with directory "src/images/" and extension ".png".
+ */
 public class ImageManager extends Manager{
 
     private static ImageManager instance;
@@ -14,6 +19,19 @@ public class ImageManager extends Manager{
             instance = new ImageManager();
         }
         return instance;
+    }
+
+    /**
+     * Description:
+     * Transform a generic Controller ArrayList to a ImageController Arraylist
+     */
+    private ArrayList<ImageController> ToImageControllers(ArrayList<Controller> controllers){
+         final ArrayList<ImageController> images = new ArrayList<>();
+        
+        for (Controller controller : controllers){
+            images.add( (ImageController) controller );
+        }
+        return images;
     }
 
     private ImageManager(){
@@ -33,7 +51,7 @@ public class ImageManager extends Manager{
         RegisterControllers(folder, images);
     }
 
-    // The current implementation of FolderController doesn't allow having folders inside other folders
+    // TODO: maybe this could be even more generic
     private void RegisterMainCharacter(){
         final FolderController folder = new FolderController("main_character/");
 
@@ -54,13 +72,13 @@ public class ImageManager extends Manager{
         return (ImageController) GetController(name);
     }
 
+    public ArrayList<ImageController> GetFolderImages(final FolderController folder){
+        final ArrayList<Controller> controllers = GetFolderControllers(folder);
+        return ToImageControllers(controllers);
+    }
+
     public ArrayList<ImageController> GetImages(){
         final ArrayList<Controller> controllers = GetControllers();
-        final ArrayList<ImageController> images = new ArrayList<>();
-        
-        for (Controller controller : controllers){
-            images.add( (ImageController) controller );
-        }
-        return images;
+        return ToImageControllers(controllers);
     }
 }

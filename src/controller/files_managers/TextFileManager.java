@@ -5,6 +5,11 @@ import controller.files_controllers.FolderController;
 import controller.files_controllers.TextFileController;
 import java.util.ArrayList;
 
+/**
+ * Description:
+ * 1. Singleton manager responsible for registering and organizing all text file resources.
+ * 2. Extends Manager with directory "src/persistance/" and extension ".txt".
+ */
 public class TextFileManager extends Manager{
 
     private static TextFileManager instance;
@@ -14,6 +19,19 @@ public class TextFileManager extends Manager{
             instance = new TextFileManager();
         }
         return instance;
+    }
+
+    /**
+     * Description:
+     * Transform a generic Controller ArrayList to a TextFileController Arraylist
+     */
+    private ArrayList<TextFileController> ToTextFileControllers(ArrayList<Controller> controllers){
+        final ArrayList<TextFileController> textfiles = new ArrayList<>();
+        
+        for (Controller controller : controllers){
+            textfiles.add( (TextFileController) controller );
+        }
+        return textfiles;
     }
 
     private TextFileManager(){
@@ -40,13 +58,13 @@ public class TextFileManager extends Manager{
         return (TextFileController) GetController(name);
     }
 
+    public ArrayList<TextFileController> GetFolderTextFiles(final FolderController folder){
+        final ArrayList<Controller> controllers = GetFolderControllers(folder);
+        return ToTextFileControllers(controllers);
+    }
+
     public ArrayList<TextFileController> GetTextFiles(){
         final ArrayList<Controller> controllers = GetControllers();
-        final ArrayList<TextFileController> textfiles = new ArrayList<>();
-        
-        for (Controller controller : controllers){
-            textfiles.add( (TextFileController) controller );
-        }
-        return textfiles;
+        return ToTextFileControllers(controllers);
     }
 }

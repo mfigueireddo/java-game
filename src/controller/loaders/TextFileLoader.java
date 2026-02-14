@@ -11,6 +11,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Description:
+ * 1. Singleton loader responsible for loading text files from disk using BufferedReader.
+ * 2. Extends Loader with String as the data type.
+ * 3. Uses TextFileManager as its corresponding manager for file path resolution.
+ * 4. Exits the application with descriptive error codes when text files are missing or corrupted.
+ */
 public class TextFileLoader extends Loader<String>{
     private static TextFileLoader instance;
 
@@ -32,6 +39,25 @@ public class TextFileLoader extends Loader<String>{
         return TextFileManager.GetInstance();
     }
 
+    /**
+     * Description:
+     * 1. Creates a File object from the given file path.
+     * 2. Verifies the file exists on disk; exits with TEXTFILE_NOT_FOUND_OR_UNSUPPORTED_FORMAT if not.
+     * 3. Reads the file line by line using BufferedReader, appending each line with
+     *    a system line separator to a StringBuilder.
+     * 4. Returns the full file content as a String.
+     *
+     * Parameters:
+     * - textfile_controller: The controller identifying the text file resource being loaded.
+     * - file_path: The resolved file path to the text file on disk.
+     *
+     * Expected Returns:
+     * - Returns the file content as a String on success.
+     * - Returns null only if an IOException occurs (after exiting the application).
+     *
+     * Restrictions:
+     * - Exits the application on any loading failure rather than throwing exceptions.
+     */
     @Override
     protected String LoadData(final Controller textfile_controller, final String file_path){
         try {
@@ -56,6 +82,14 @@ public class TextFileLoader extends Loader<String>{
         }
     }
 
+    /**
+     * Description:
+     * 1. Exits the application with TEXTFILE_NOT_FOUND error and the controller's string
+     *    representation as additional info.
+     *
+     * Restrictions:
+     * - Always terminates the application; never returns normally.
+     */
     @Override
     protected void HandleMissingResource(final Controller textfile_controller) {
         GameExit.Exit(ErrorStatus.TEXTFILE_NOT_FOUND, " - " + textfile_controller);

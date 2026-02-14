@@ -1,5 +1,11 @@
 package controller.utils;
 
+/**
+ * Description:
+ * 1. Enum defining all application error states with descriptive messages.
+ * 2. Each constant carries an error message and uses its ordinal value as the exit code.
+ * 3. Used by GameExit to print formatted error messages and exit the application.
+ */
 public enum ErrorStatus {
     SUCCESS("Success"),
     MIN_SCREEN_SIZE("User's screen doesn't have minimum requirements"),
