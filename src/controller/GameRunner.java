@@ -6,10 +6,10 @@ import view.ViewAPI;
 
 public class GameRunner {
 
-    static ViewAPI view;
+    private static ViewAPI view;
     
-    static ImageLoader image_loader;
-    static TextFileLoader textfile_loader;
+    private static ImageLoader image_loader;
+    private static TextFileLoader textfile_loader;
 
     public static void main(String[] args) {
         StartUp();
