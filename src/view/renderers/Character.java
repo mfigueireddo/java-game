@@ -7,10 +7,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import view.panels.Panel;
 
+/**
+ * Description:
+ * 1. Singleton renderer responsible for loading and rendering the player character.
+ * 2. Loads directional character sprite images (front, back, left, right) into the
+ *    used_images cache.
+ * 3. Rendering logic is not yet implemented.
+ */
 public class Character extends Renderer{
 
     private static Character instance;
 
+    /**
+     * Description:
+     * 1. Returns the existing singleton instance, or creates a new one if none exists.
+     *
+     * Expected Returns:
+     * - Returns the singleton Character instance.
+     */
     public static Character GetInstance(){
         if (instance == null){
             instance = new Character();
@@ -21,10 +35,37 @@ public class Character extends Renderer{
 
     private Character(){}
 
+    /**
+     * Description:
+     * 1. Delegates to LoadCharacter("main") to load the main character sprites.
+     *
+     * Expected Returns:
+     * - Returns true when the character sprites are successfully loaded.
+     */
     public boolean LoadMainCharacter(){
         return LoadCharacter("main");
     }
 
+    /**
+     * Description:
+     * 1. Clears the used_images cache if it contains data from a previous character.
+     * 2. Iterates over the directional sprite names ("front", "back", "left", "right").
+     * 3. For each sprite, retrieves the ImageController by name, loads the image via
+     *    ImageLoader, and stores it in the used_images cache keyed by image ID.
+     *
+     * Parameters:
+     * - character_name: The name of the character to load. Currently unused for path
+     *   resolution, as sprites are looked up by fixed directional names.
+     *
+     * Expected Returns:
+     * - Returns true when all character sprites are loaded.
+     *
+     * Assertives of Entrance:
+     * - ImageManager and ImageLoader must be initialized with character sprites registered and loaded.
+     *
+     * Assertives of Departure:
+     * - used_images contains BufferedImages for "front", "back", "left", and "right".
+     */
     // TODO: should it return false?
     public boolean LoadCharacter(final String character_name){
         if ( !used_images.isEmpty() ){
@@ -43,6 +84,10 @@ public class Character extends Renderer{
         return true;
     }
 
+    /**
+     * Description:
+     * 1. Placeholder for character rendering logic. Not yet implemented.
+     */
     @Override
     public void Render(final Graphics2D graphics_2d, final Panel panel){
         // Fuck this will be so much work

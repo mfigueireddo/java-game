@@ -7,6 +7,11 @@ import java.awt.Graphics2D;
 import view.renderers.Character;
 import view.renderers.Map;
 
+/**
+ * Description:
+ * 1. Singleton main game screen extending Panel where gameplay rendering occurs.
+ * 2. Delegates rendering to Map and Character renderers via paintComponent().
+ */
 public class Game extends Panel{
 
     private static Game instance;
@@ -32,6 +37,12 @@ public class Game extends Panel{
         observer.Register(Notification.WINDOW_RESIZED, this::OnWindowResize);
     }
 
+    /**
+     * Description:
+     * 1. Calls the parent paintComponent() for default painting behavior.
+     * 2. Casts the Graphics object to Graphics2D.
+     * 3. Delegates rendering to the correct Renderers.
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -46,6 +57,11 @@ public class Game extends Panel{
         map.LoadMainMap();
     }
     
+    /**
+     * Description:
+     * 1. Updates the map renderer's screen dimensions with the current panel size.
+     * 2. Recalculates block (tile) dimensions based on the new screen size.
+     */
     // Might cause problems: Window's constructor doesn't notify resizing, only when changing the displayed panel
     private void OnWindowResize(){
         map.SetScreenSize(getWidth(), getHeight());

@@ -8,10 +8,25 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import view.panels.Panel;
 
+/**
+ * Description:
+ * 1. Singleton renderer responsible for parsing and rendering tile-based maps from text files.
+ * 2. Loads map data from text files, parses tile IDs, resolves corresponding images,
+ *    and renders the full map as a grid of tiles.
+ * 3. Calculates tile (block) dimensions based on screen size and map dimensions.
+ * 4. Currently renders the entire map to fill the screen (no viewport implemented yet).
+ */
 public class Map extends Renderer{
 
     private static Map instance;
 
+    /**
+     * Description:
+     * 1. Returns the existing singleton instance, or creates a new one if none exists.
+     *
+     * Expected Returns:
+     * - Returns the singleton Map instance.
+     */
     public static Map GetInstance(){
         if (instance == null){
             instance = new Map();
@@ -30,10 +45,44 @@ public class Map extends Renderer{
 
     private Map(){}
 
+    /**
+     * Description:
+     * 1. Delegates to LoadMap("main") to load the main map.
+     *
+     * Expected Returns:
+     * - Returns true when the map was successfully loaded.
+     * - Returns false when the "main" map is already loaded.
+     */
     public boolean LoadMainMap(){
         return LoadMap("main");
     }
 
+    /**
+     * Objective: Loads a named map, resolving its images and calculating tile dimensions.
+     *
+     * Description:
+     * 1. Checks if the requested map is already loaded; returns false if so.
+     * 2. Clears the used_images cache if it contains data from a previous map.
+     * 3. Retrieves the map text file content via TextFileLoader.
+     * 4. Exits with EMPTY_TEXTFILE if the map content is empty.
+     * 5. Calls LoadImages() to parse tile IDs and cache their corresponding images.
+     * 6. Calls RegisterMapDimensions() to determine map width/height and calculate block sizes.
+     *
+     * Parameters:
+     * - map_name: The name of the map to load (e.g., "main"), matching a registered TextFileController.
+     *
+     * Expected Returns:
+     * - Returns true when the map was successfully loaded.
+     * - Returns false when the map with the given name is already loaded.
+     *
+     * Assertives of Entrance:
+     * - The TextFileManager and TextFileLoader must be initialized with the map registered and loaded.
+     *
+     * Assertives of Departure:
+     * - current_map_name and current_map are updated to the new map.
+     * - used_images contains all tile images referenced by the map.
+     * - map_width, map_height, block_width, and block_height are calculated.
+     */
     private boolean LoadMap(final String map_name){
         if (current_map_name.equals(map_name)){
             return false; // Map already loaded
@@ -56,6 +105,20 @@ public class Map extends Renderer{
         return true;
     }
 
+    /**
+     * Description:
+     * 1. Splits the entire map content by whitespace to extract all tile element strings.
+     * 2. Parses each element as an integer tile ID.
+     * 3. Resolves each ID to an ImageController via ImageManager, then loads the image
+     *    via ImageLoader.
+     * 4. Stores each tile ID and its corresponding BufferedImage in the used_images cache.
+     *
+     * Parameters:
+     * - map: The full map text content with space-separated integer tile IDs.
+     *
+     * Restrictions:
+     * - Exits the application with UNRECOGNIZED_MAP_ELEMENT if a non-numeric element is found.
+     */
     private void LoadImages(final String map){
         final String[] map_elements = map.trim().split("\\s+");
         for (final String map_element : map_elements) {
@@ -71,6 +134,23 @@ public class Map extends Renderer{
         }
     }
 
+    /**
+     * Description:
+     * 1. Splits the map content by newlines to determine the number of rows.
+     * 2. Splits the first row by whitespace to determine the number of columns.
+     * 3. Sets map_height and map_width accordingly.
+     * 4. Calls CalculateBlockDimensions() to compute tile sizes based on screen and map dimensions.
+     *
+     * Parameters:
+     * - map: The full map text content.
+     *
+     * Assertives of Entrance:
+     * - The map content is non-empty (validated earlier by LoadMap).
+     *
+     * Assertives of Departure:
+     * - map_width and map_height reflect the map's column and row counts.
+     * - block_width and block_height are calculated.
+     */
     private void RegisterMapDimensions(final String map){
         // No need to check if there is any element in the file because it would have been caught by TextFileLoader
         final String[] lines = map.trim().split("\\n");
@@ -82,11 +162,39 @@ public class Map extends Renderer{
         CalculateBlockDimensions();
     }
 
+    /**
+     * Description:
+     * 1. Divides the screen width by the map width to get the tile width.
+     * 2. Divides the screen height by the map height to get the tile height.
+     *
+     * Assertives of Entrance:
+     * - map_width and map_height must be greater than zero.
+     * - screen_width and screen_height should be set via SetScreenSize().
+     */
     public void CalculateBlockDimensions(){
         block_width = (float) screen_width / map_width;
         block_height = (float) screen_height / map_height;
     }
     
+    /**
+     * Description:
+     * 1. Splits the current map content into rows by newline.
+     * 2. For each row, splits by whitespace to get individual tile IDs.
+     * 3. For each tile, parses the integer ID and retrieves the cached BufferedImage.
+     * 4. Calculates the tile's position using the column/row index multiplied by block dimensions.
+     * 5. Calculates the tile's rendered width and height by computing the difference between
+     *    the current and next tile positions, compensating for fractional pixel rounding
+     *    to avoid unpainted areas.
+     * 6. Draws each tile image at the calculated position with the calculated dimensions.
+     *
+     * Parameters:
+     * - graphics_2d: The Graphics2D context used for rendering.
+     * - panel: The Panel used as the ImageObserver for drawImage().
+     *
+     * Assertives of Entrance:
+     * - A map must be loaded (current_map is non-empty, used_images is populated).
+     * - Screen dimensions and block dimensions must be calculated.
+     */
     // Before creating a viewport, the whole map will be rendered in the screen
     @Override
     public void Render(final Graphics2D graphics_2d, final Panel panel){

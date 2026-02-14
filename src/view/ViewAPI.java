@@ -1,5 +1,10 @@
 package view;
 
+/**
+ * Description:
+ * 1. Singleton facade that provides a simplified public API for the view layer.
+ * 2. Delegates its calls, shielding the controller from direct interaction with view internals.
+ */
 public class ViewAPI{
 
     private static ViewAPI instance;

@@ -10,6 +10,11 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 
+/**
+ * Description:
+ * 1. Singleton main menu screen extending Panel.
+ * 2. Displays three buttons: "New Game", "Load Game", and "Settings".
+ */
 public class Menu extends Panel {
 
     private static Menu instance;
@@ -43,6 +48,18 @@ public class Menu extends Panel {
         settings.setEnabled(should_enable_buttons);
     }
 
+    /**
+     * Objective: Configures all button properties including alignment, focus behavior,
+     * dimensions, action listeners, and hover effects.
+     *
+     * Description:
+     * 1. Sets center alignment for all buttons.
+     * 2. Disables focus painting on all buttons.
+     * 3. Sets fixed dimensions (200x40) for all buttons, including max size to prevent
+     *    stretching by the Box layout.
+     * 4. Attaches action listeners that delegate to OnNewGame(), OnLoadGame(), OnSettings().
+     * 5. Applies hover color effects (light gray normal, light blue hover) to all buttons.
+     */
     private void SetupButtons(){
         // Buttons alignment
         final float buttons_alignment = Component.CENTER_ALIGNMENT;
@@ -81,6 +98,12 @@ public class Menu extends Panel {
         SetupButtonHoverEffect(settings, button_normal_color, button_hover_color);
     }
 
+    /**
+     * Description:
+     * 1. Sets the button's normal background color.
+     * 2. Adds a mouse listener that changes the background to the hover color on mouse enter
+     *    and reverts to the normal color on mouse exit.
+     */
     private void SetupButtonHoverEffect(JButton button, Color normal_color, Color hover_color) {
         button.setBackground(normal_color);
         
@@ -97,6 +120,12 @@ public class Menu extends Panel {
         });
     }
 
+    /**
+     * Description:
+     * 1. Creates a vertical Box container with a black border and padding.
+     * 2. Adds the three buttons to the box with rigid area spacers between them.
+     * 3. Adds the box to the menu panel.
+     */
     private void SetupButtonsVBox(){
         // Box around the buttons
         final int buttons_vbox_border_thickness = 2;
